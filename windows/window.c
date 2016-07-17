@@ -4204,6 +4204,11 @@ static int TranslateKey(UINT message, WPARAM wParam, LPARAM lParam,
 	    request_paste(NULL);
 	    return 0;
 	}
+	// ALT+V -> paste
+	if (wParam == 0x56 && message == WM_SYSKEYDOWN) {
+		request_paste(NULL);
+		return 0;
+	}
 	if (left_alt && wParam == VK_F4 && conf_get_int(conf, CONF_alt_f4)) {
 	    return -1;
 	}
